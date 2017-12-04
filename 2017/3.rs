@@ -49,9 +49,8 @@ fn second_star(input: i32) {
     let mut step = 2;
     let mut w = 1;
     sq[i][j] = w;
-    
-    'search:
-    loop {
+
+    'search: loop {
         i += 1;
         j += 1;
         for _ in 0..step {
@@ -95,8 +94,7 @@ fn second_star(input: i32) {
 }
 
 fn fill(sq: &mut Vec<Vec<i32>>, i: usize, j: usize) -> i32 {
-    sq[i][j] = sq[i-1][j-1] + sq[i][j-1] + sq[i+1][j-1]
-             + sq[i-1][j]                + sq[i+1][j]
-             + sq[i-1][j+1] + sq[i][j+1] + sq[i+1][j+1];
+    sq[i][j] = sq[i - 1][j - 1] + sq[i][j - 1] + sq[i + 1][j - 1] + sq[i - 1][j] +
+        sq[i + 1][j] + sq[i - 1][j + 1] + sq[i][j + 1] + sq[i + 1][j + 1];
     return sq[i][j];
 }

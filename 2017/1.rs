@@ -28,13 +28,13 @@ fn main() {
     let mut total = 0;
 
     for i in 0..half {
-        total += if chars[i] == chars[i+half] {
+        total += if chars[i] == chars[i + half] {
             match chars[i].to_digit(10) {
                 None => 0,
                 Some(v) => 2 * v,
             }
         } else {
-                0
+            0
         };
     }
 

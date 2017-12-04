@@ -21,7 +21,9 @@ fn main() {
     // First star
     let mut total = 0;
     input.split('\n').for_each(|line| {
-        let line: Vec<i32> = line.split_whitespace().map(|x| { x.parse::<i32>().unwrap() }).collect();
+        let line: Vec<i32> = line.split_whitespace()
+            .map(|x| x.parse::<i32>().unwrap())
+            .collect();
         let min = line.iter().min().unwrap();
         let max = line.iter().max().unwrap();
         total += max - min;
@@ -29,17 +31,22 @@ fn main() {
     println!("{}", total);
 
     // Second star
-    let total: i32 = input.split('\n').map(|line| {
-        let mut numbers = line.split_whitespace().map(|x| { x.parse::<i32>().unwrap() }).collect::<Vec<i32>>();
-        numbers.sort();
-        for i in 0..numbers.len() {
-            for j in i+1..numbers.len() {
-                if numbers[j] % numbers[i] == 0 {
-                    return numbers[j] / numbers[i];
+    let total: i32 = input
+        .split('\n')
+        .map(|line| {
+            let mut numbers = line.split_whitespace()
+                .map(|x| x.parse::<i32>().unwrap())
+                .collect::<Vec<i32>>();
+            numbers.sort();
+            for i in 0..numbers.len() {
+                for j in i + 1..numbers.len() {
+                    if numbers[j] % numbers[i] == 0 {
+                        return numbers[j] / numbers[i];
+                    }
                 }
             }
-        }
-        return 0;
-    }).sum();
+            return 0;
+        })
+        .sum();
     println!("{}", total);
 }
